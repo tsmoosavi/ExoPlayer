@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), Player.Listener {
     }
 
     private fun addMP4Files() {
-        val mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4))
+        val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4")
         val newItems: List<MediaItem> = ImmutableList.of(
             mediaItem
         )
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), Player.Listener {
 
     private fun addMP3() {
         // Build the media item.
-        val mediaItem = MediaItem.fromUri(getString(R.string.test_mp3))
+        val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/play.mp3")
         player.setMediaItem(mediaItem)
         // Set the media item to be played.
         player.setMediaItem(mediaItem)
