@@ -17,13 +17,13 @@ import com.google.common.collect.ImmutableList
 class MainActivity : AppCompatActivity(), Player.Listener {
     private lateinit var player: ExoPlayer
     private lateinit var playerView: PlayerView
-    private lateinit var progressBar: ProgressBar
+
     private lateinit var titleTv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        progressBar = findViewById(R.id.progressBar)
+
 
         titleTv = findViewById(R.id.title)
 
@@ -85,17 +85,7 @@ class MainActivity : AppCompatActivity(), Player.Listener {
     }
 
     // handle loading
-    override fun onPlaybackStateChanged(state: Int) {
-        when (state) {
-            Player.STATE_BUFFERING -> {
-                progressBar.visibility = View.VISIBLE
 
-            }
-            Player.STATE_READY -> {
-                progressBar.visibility = View.INVISIBLE
-            }
-        }
-    }
 
     //get Title from metadata
     override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
