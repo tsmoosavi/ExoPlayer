@@ -18,14 +18,11 @@ class MainActivity : AppCompatActivity(), Player.Listener {
     private lateinit var player: ExoPlayer
     private lateinit var playerView: PlayerView
 
-    private lateinit var titleTv: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        titleTv = findViewById(R.id.title)
 
         setupPlayer()
         addMP3()
@@ -45,10 +42,8 @@ class MainActivity : AppCompatActivity(), Player.Listener {
 
     private fun addMP4Files() {
         val mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4))
-        val mediaItem2 = MediaItem.fromUri(getString(R.string.myTestMp4))
         val newItems: List<MediaItem> = ImmutableList.of(
-            mediaItem,
-            mediaItem2
+            mediaItem
         )
         player.addMediaItems(newItems)
         player.prepare()
@@ -88,11 +83,6 @@ class MainActivity : AppCompatActivity(), Player.Listener {
 
 
     //get Title from metadata
-    override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
-
-        titleTv.text = mediaMetadata.title ?: mediaMetadata.displayTitle ?: "no title found"
-
-    }
 
     // save details if Activity is destroyed
     override fun onSaveInstanceState(outState: Bundle) {
