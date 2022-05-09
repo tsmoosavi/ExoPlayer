@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity(), Player.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         setupPlayer()
         addMP3()
         addMP4Files()
@@ -41,7 +39,8 @@ class MainActivity : AppCompatActivity(), Player.Listener {
     }
 
     private fun addMP4Files() {
-        val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4")
+        val mediaItem = MediaItem.fromUri("https://caspian1.cdn.asset.aparat.com/aparat-video/d22d493d6bc1d0757a7770c6cf2bcd4643501631-144p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjE3YjllODRiNzFmZDY1ODI0MDQ3NDJmZjFjMTFkMWEwIiwiZXhwIjoxNjUyMDk5NzgxLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.i-FCwiR0N9q_4YiCVCIsn8cEsb18zTf6lq0jWTaF_Jk")
+       //"https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"
         val newItems: List<MediaItem> = ImmutableList.of(
             mediaItem
         )
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity(), Player.Listener {
         val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/play.mp3")
         player.setMediaItem(mediaItem)
         // Set the media item to be played.
-        player.setMediaItem(mediaItem)
+//        player.setMediaItem(mediaItem)
         // Prepare the player.
         player.prepare()
     }
