@@ -2,29 +2,35 @@ package com.example.exoplayer
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.MediaMetadata
-import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.common.collect.ImmutableList
 
 
-class MainActivity : AppCompatActivity(), Player.Listener {
+class MainActivity : AppCompatActivity() {
     private lateinit var player: ExoPlayer
     private lateinit var playerView: PlayerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        var aB = findViewById<Button>(R.id.actionButton)
         setupPlayer()
         addMP3()
         addMP4Files()
+        player.play()
+        aB.setOnClickListener {
+//            val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/play.mp3")
+//            player.setMediaItem(mediaItem)
+            player.setPlaybackSpeed(2f)
+            player.prepare()
+
+
+            Log.d("dvdsfs","speed")
+        }
 
 
         // restore playstate on Rotation
@@ -33,9 +39,18 @@ class MainActivity : AppCompatActivity(), Player.Listener {
                 val restoredMediaItem = savedInstanceState.getInt("mediaItem")
                 val seekTime = savedInstanceState.getLong("SeekTime")
                 player.seekTo(restoredMediaItem, seekTime)
-                player.play()
+//                player.play()
             }
         }
+    }
+
+    private fun speed() {
+        var aB = findViewById<Button>(R.id.actionButton)
+        aB.setOnClickListener {
+            player.setPlaybackSpeed(2f)
+        player.prepare()}
+        Log.d("dvdsfs","speed")
+
     }
 
     private fun addMP4Files() {
@@ -52,7 +67,11 @@ class MainActivity : AppCompatActivity(), Player.Listener {
         player = ExoPlayer.Builder(this).build()
         playerView = findViewById(R.id.video_view)
         playerView.player = player
-        player.addListener(this)
+//        player.addListener(this)
+        playerView.useController = false
+        Log.d("dvdsfs","speed")
+
+
     }
 
     private fun addMP3() {
@@ -63,6 +82,8 @@ class MainActivity : AppCompatActivity(), Player.Listener {
 //        player.setMediaItem(mediaItem)
         // Prepare the player.
         player.prepare()
+//        player.play()
+//        player.setPlaybackSpeed(2f)
     }
 
 
